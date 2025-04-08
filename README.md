@@ -5,6 +5,6 @@
 
 Roda os comandos necessarios para compilação e executa o arquivo.
 
-#### ``` make clean ```
+#### ``` make clean: ```
 
 Limpa os arquivos de compilação e temporarios.
