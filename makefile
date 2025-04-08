@@ -15,18 +15,18 @@ CC = gcc
 FL = flex
 CFLAGS = -Wall -g
 SRC = main.l
-OBJ = lex.yy.c
+OBJ = lex.c
 OUT = main
 CODE = code.mag
 
 
 all:
-	$(FL) $(SRC)
-	$(CC) $(OBJ) -o $(OUT) -l fl
+	$(FL) -o src/$(OBJ) src/$(SRC)
+	$(CC) src/$(OBJ) -o bin/$(OUT) -l fl
 
 clean:
-	rm -f $(OBJ) $(OUT)
+	rm -f src/$(OBJ)
 
 
 run: all
-	./$(OUT) $(CODE)
+	./bin/$(OUT) $(CODE)

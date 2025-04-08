@@ -1,11 +1,15 @@
 START
 
 ~ Soma de dois numeros
+test3
 
-123123 + 4324324 
 
-2.0
+int teste()
+ {
+    printf("teste");
+}
 
+if teste:
 
 
 END
