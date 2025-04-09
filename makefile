@@ -8,7 +8,7 @@
 # 	./main $(code)
 
 # clean:
-# 	rm -f lex.yy.c
+# 	rm -f src/lex.c
 
 # Definições de variáveis
 CC = gcc

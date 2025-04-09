@@ -1,15 +1,23 @@
 START
+222fsdflskajfsf
+true false
+true
+
 
 ~ Soma de dois numeros
 test3
 
+int
+teste
+(
 
-int teste()
- {
+int teste() {
     printf("teste");
 }
 
 if teste:
 
+while true:
+	teste = "ff"
 
 END
