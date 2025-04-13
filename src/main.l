@@ -1,58 +1,104 @@
 START "START"
 END "END"
 
-IGNORE [ \n\t]
+IGNORE [ #\n\t]
 COMENT \~.*
 
 INT [0-9]+
-STR "[A-Za-z]+"
+STR \"[A-Za-z ]+\"
 FLOAT [0-9]+\.[0-9]+
-BOOL true|false
+BOOL (true|false)
 
 IF if
 ELSE else
 FOR for
 WHILE while
 
-OPE [-+*/=]
-OPE2 [";.:;(){}<>=]
+OP_ARI [-+*/=]
+OP_2 ["%&|]
+
+AND and
+OR or
+NOT not
+DOT \.
+COLON \:
+SEMI_COLON \;
+COMMA \,
+EQUAL =
+EXCLAMETION \!
+PARENTHESES [\(\)]
+BRACKETS [\[\]]
+BRACES [\{\}]
+SLASH \\
+LESS_THAN <
+GREATER_THAN >
 
 TYPE int|float|str|bool
 VAR [a-zA-Z_][a-zA-Z0-9_]*
-FUNC {TYPE}" "{VAR}\(\)
+FUNC func
 
 INP	input 
+OUT output
+IMPORT add
 
+PASS pass
 
 %%
-{START} {{printf("\n[START]\n\n");}}
-{END} {printf("\n[END]\n\n");}
+{DOT}           { printf("%-20s | %s\n", "DOT", yytext); }
+{AND}           { printf("%-20s | %s\n", "AND", yytext); }
+{OR}            { printf("%-20s | %s\n", "OR", yytext); }
+{NOT}           { printf("%-20s | %s\n", "NOT", yytext); }
+{COLON}         { printf("%-20s | %s\n", "COLON", yytext); }
+{SEMI_COLON}    { printf("%-20s | %s\n", "SEMI_COLON", yytext); }
+{COMMA}         { printf("%-20s | %s\n", "COMMA", yytext); }
+{EQUAL}         { printf("%-20s | %s\n", "EQUAL", yytext); }
+{EXCLAMETION}   { printf("%-20s | %s\n", "EXCLAMETION", yytext); }
+{PARENTHESES}   { printf("%-20s | %s\n", "PARENTHESES", yytext); }
+{BRACKETS}      { printf("%-20s | %s\n", "BRACKETS", yytext); }
+{BRACES}        { printf("%-20s | %s\n", "BRACES", yytext); }
+{SLASH}         { printf("%-20s | %s\n", "SLASH", yytext); }
+{GREATER_THAN}  { printf("%-20s | %s\n", "GREATER_THAN", yytext); }
+{LESS_THAN}     { printf("%-20s | %s\n", "LESS_THAN", yytext); }
 
-{IGNORE} {}
-{COMENT} {printf("COMENT: %s\n\n", yytext);}
+{IMPORT}        { printf("%-20s | %s\n", "IMPORT", yytext); }
 
-{TYPE} {printf("TYPE: %s\n", yytext);}
-{FUNC} {printf("FUNC: %s\n", yytext);}
+{START}         { printf("\n%-20s | %s\n\n", "[START]", yytext); }
+{END}           { printf("\n%-20s | %s\n\n", "[END]", yytext); }
 
-{STR} {printf("STR: %s\n", yytext);}
-{INT} {printf("INT: %s\n", yytext);}
-{FLOAT} {printf("FLOAT: %s\n", yytext);}
-{BOOL} {printf("BOOL: %s\n", yytext);}
+{IGNORE}        {}
+{COMENT}        { printf("\n%-5s %s\n\n", "COMENT", yytext); }
 
-{IF} {printf("IF: %s\n", yytext);}
-{ELSE} {printf("ELSE: %s\n", yytext);}
-{FOR} {printf("FOR: %s\n", yytext);}
-{WHILE} {printf("WHILE: %s\n", yytext);}
+{TYPE}          { printf("%-20s | %s\n", "TYPE", yytext); }
+{FUNC}          { printf("%-20s | %s\n", "FUNC", yytext); }
+{PASS}          { printf("%-20s | %s\n", "PASS", yytext); }
 
-{VAR} {printf("VAR: %s\n", yytext);}
+{STR}           { printf("%-20s | %s\n", "STR", yytext); }
+{INT}           { printf("%-20s | %s\n", "INT", yytext); }
+{FLOAT}         { printf("%-20s | %s\n", "FLOAT", yytext); }
+{BOOL}          { printf("%-20s | %s\n", "BOOL", yytext); }
 
-{OPE} {printf("OPE: %s\n", yytext);}
-{OPE2} {printf("OPE2: %s\n", yytext);}
+{IF}            { printf("%-20s | %s\n", "IF", yytext); }
+{ELSE}          { printf("%-20s | %s\n", "ELSE", yytext); }
+{FOR}           { printf("%-20s | %s\n", "FOR", yytext); }
+{WHILE}         { printf("%-20s | %s\n", "WHILE", yytext); }
+
+{INP}           { printf("%-20s | %s\n", "INP", yytext); }
+{OUT}           { printf("%-20s | %s\n", "OUT", yytext); }
+
+{VAR}           { printf("%-20s | %s\n", "VAR", yytext); }
+
+{OP_ARI}        { printf("%-20s | %s\n", "OPE", yytext); }
+{OP_2}          { printf("%-20s | %s\n", "OPE2", yytext); }
+
+.               { printf("%-20s | %s\n", "UNKNOWN", yytext); }
+
 %%
 
 
 int main(int numargs, char *arg[]) {
-	printf("\n\n\n");
+	printf("\n%-20s | %s\n", "TOKEN", "VALOR");
+	printf("---------------------|-------------------------\n\n");
+
 	yyin = fopen(arg[1], "r");
 	yylex();
 	fclose(yyin);

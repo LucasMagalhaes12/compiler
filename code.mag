@@ -1,23 +1,55 @@
+add test
+
 START
-222fsdflskajfsf
-true false
-true
 
+~ TESTE DE VARIAVEIS
 
-~ Soma de dois numeros
-test3
+str name = "lucas"
+int age = 23
+float heigh = 1.70
+bool student = true
 
-int
-teste
-(
+~ TESTE DE FUNÇÕES
 
-int teste() {
-    printf("teste");
+func teste() {
+    pass;
 }
 
-if teste:
 
-while true:
-	teste = "ff"
+~ TESTE DE FLUXO DE CONTROLE
+
+while true {
+	pass;
+}
+
+for (int i=0; i<20; i++)
+    pass
+
+~ TESTE DE SAIDA E ENTRADA
+
+input("digite algo")
+output("Ola")
+.
+
+END
+
+~ TESTE DE OUTROS CARACTERS
+
+and
+or
+not
+.
+:
+;
+,
+=
+!
+()
+[]
+{}
+\
+<>
+
+@
 
 END
