@@ -91,15 +91,25 @@ PASS pass
 {OP_2}          { printf("%-20s | %s\n", "OPE2", yytext); }
 
 .               { printf("%-20s | %s\n", "UNKNOWN", yytext); }
-
 %%
 
 
-int main(int numargs, char *arg[]) {
+int main(int argc, char *argv[]) {
+	if (argc < 2) {
+		printf("ERROR: Please provide the filename as a command-line argument.\n");
+		return 1;
+	}
+	
+	yyin = fopen(argv[1], "r");
+	if (!yyin) {
+        fprintf(stderr, "ERROR: Could not open file '%s'.\n", argv[1]);
+        return 1;
+    }
+
+	printf("\"%s\"", argv[1]);
 	printf("\n%-20s | %s\n", "TOKEN", "VALOR");
 	printf("---------------------|-------------------------\n\n");
 
-	yyin = fopen(arg[1], "r");
 	yylex();
 	fclose(yyin);
 	return 0;
