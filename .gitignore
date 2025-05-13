@@ -1,2 +1,5 @@
 lex.c
 .vscode/*
+examples
+bison.c
+lex.c

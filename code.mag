@@ -1,55 +1,6 @@
-add test
-
 START
-
-~ TESTE DE VARIAVEIS
-
-str name = "lucas"
-int age = 23
-float heigh = 1.70
-bool student = true
-
-~ TESTE DE FUNÇÕES
-
-func teste() {
-    pass;
-}
-
-
-~ TESTE DE FLUXO DE CONTROLE
-
-while true {
-	pass;
-}
-
-for (int i=0; i<20; i++)
-    pass
-
-~ TESTE DE SAIDA E ENTRADA
-
-input("digite algo")
-output("Ola")
-.
-
-END
-
-~ TESTE DE OUTROS CARACTERS
-
-and
-or
-not
-.
-:
-;
-,
-=
-!
-()
-[]
-{}
-\
-<>
-
-@
-
+a = 10 - 20
+output(a)
+input(a)
+output(a)
 END
