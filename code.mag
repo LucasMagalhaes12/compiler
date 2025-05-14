@@ -1,6 +1,11 @@
 START
-a = 10 - 20
-output(a)
+
+output("Digite um número para 'a': ")
 input(a)
-output(a)
+output("Digite o segundo número para 'b': ")
+input(b)
+output("(a + b) * 10 = ")
+d = (a + b) * 10
+output(d)
+
 END

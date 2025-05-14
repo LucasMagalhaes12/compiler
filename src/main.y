@@ -15,8 +15,10 @@ void yyerror (char *s) {
 %union {
 	float flo;
 	int inte;
+	char *str;
 }
 
+%token <str> STR
 %token <flo>NUM
 %token <inte>VAR
 %token START
@@ -41,8 +43,8 @@ cod: cod cmdos
 	|
 	;
 
-cmdos: OUT '(' exp ')' {
-						printf ("%.2f \n",$3);
+cmdos: OUT '(' args ')' {
+						printf ("\n");
 						}
     | INP '(' VAR ')' {
                         scanf("%f", &var[$3]);
@@ -51,6 +53,13 @@ cmdos: OUT '(' exp ')' {
 					var[$1] = $3;
 					}
 	;
+
+args: args ',' arg { } | arg { };
+
+arg: STR  { printf("%s", $1); free($1); }
+    | exp { printf("%.2f", $1); }
+    ;
+
 
 exp: exp '+' exp {$$ = $1 + $3;}
 	|exp '-' exp {$$ = $1 - $3;}
@@ -69,7 +78,7 @@ valor: NUM {$$ = $1;}
 %%
 
 
-#include "lex.c"
+#include "lex.yy.c"
 
 int main(int argc, char *argv[]) {
 	if (argc < 2) {
@@ -84,8 +93,9 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+
     yyparse();
-	yylex();
+	// yylex();
 	fclose(yyin);
 	return 0;
 }
