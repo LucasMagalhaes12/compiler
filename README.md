@@ -55,17 +55,17 @@ Navegue até o diretório raiz do projeto no seu terminal.
     make compile
     ```
     Este comando executa as seguintes etapas na ordem correta:
-    * [cite_start]Gera `src/lex.c` a partir de `src/lex.l` usando Flex[cite: 1].
-    * [cite_start]Gera `src/bison.c` a partir de `src/bison.y` usando Bison[cite: 1].
-    * [cite_start]Compila `src/bison.c` e `src/ast.c` (se `ast.c` for o único `SOURCES` definido [cite: 1][cite_start]) usando `gcc`, linkando com as bibliotecas `flex` (`-lfl`) e `math` (`-lm`)[cite: 1].
-    * [cite_start]Cria o executável `main` no diretório `bin/`[cite: 1].
+    * Gera `src/lex.c` a partir de `src/lex.l` usando Flex.
+    * Gera `src/bison.c` a partir de `src/bison.y` usando Bison.
+    * Compila `src/bison.c` e `src/ast.c` (se `ast.c` for o único `SOURCES` definido) usando `gcc`, linkando com as bibliotecas `flex` (`-lfl`) e `math` (`-lm`).
+    * Cria o executável `main` no diretório `bin/`.
 
 2.  **Executar um Programa `mag`**:
-    [cite_start]Para compilar o projeto (se ainda não estiver compilado) e, em seguida, executar o arquivo `code.mag`[cite: 1], utilize:
+    Para compilar o projeto (se ainda não estiver compilado) e, em seguida, executar o arquivo `code.mag`, utilize:
     ```bash
     make run
     ```
-    [cite_start]Isso executará o comando `./bin/main code.mag`[cite: 1].
+    Isso executará o comando `./bin/main code.mag`.
 
     Para executar um arquivo `mag` específico (por exemplo, `test.mag`), você pode fazer isso manualmente após a compilação:
     ```bash
@@ -78,20 +78,20 @@ Navegue até o diretório raiz do projeto no seu terminal.
         ```bash
         make flex
         ```
-        [cite_start]Gera `src/lex.c` a partir de `src/lex.l`[cite: 1].
+        Gera `src/lex.c` a partir de `src/lex.l`.
     * **Apenas Bison (Analisador Sintático)**:
         ```bash
         make bison
         ```
-        [cite_start]Gera `src/bison.c` a partir de `src/bison.y`[cite: 1].
+        Gera `src/bison.c` a partir de `src/bison.y`.
     * **Apenas GCC (Compilação do Código C)**:
         ```bash
         make gcc
         ```
-        [cite_start]Compila `src/bison.c` e outros fontes C para criar o executável `main`[cite: 1]. Note que este comando assume que `lex.c` e `bison.c` já foram gerados.
+        Compila `src/bison.c` e outros fontes C para criar o executável `main`. Note que este comando assume que `lex.c` e `bison.c` já foram gerados.
 
 4.  **Limpar o Projeto**:
-    [cite_start]Para remover os arquivos gerados durante a compilação (como `lex.c` e `bison.c` [cite: 1]), use:
+    Para remover os arquivos gerados durante a compilação (como `lex.c` e `bison.c`), use:
     ```bash
     make clean
     ```
