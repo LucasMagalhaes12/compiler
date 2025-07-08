@@ -25,13 +25,13 @@ O projeto é organizado da seguinte forma:
 * `src/`: Contém os arquivos fonte do compilador:
     * `lex.l`: Definições do analisador lexical (Flex).
     * `bison.y`: Definições do analisador sintático (Bison).
-    * [cite_start]`ast.c`: Implementação da Árvore de Sintaxe Abstrata (AST)[cite: 1].
-    * [cite_start]`lex.c`: Arquivo C gerado pelo Flex a partir de `lex.l`[cite: 1].
-    * [cite_start]`bison.c`: Arquivo C gerado pelo Bison a partir de `bison.y`[cite: 1].
-* [cite_start]`bin/`: Diretório onde o executável compilado (`main`) será colocado[cite: 1].
-* [cite_start]`code.mag`: Um arquivo de exemplo de programa `mag`[cite: 1].
-* [cite_start]`test.mag`: Um arquivo de teste da linguagem `mag` com diversas funcionalidades[cite: 2].
-* [cite_start]`makefile`: O arquivo principal para automatizar a compilação e execução[cite: 1].
+    * `ast.c`: Implementação da Árvore de Sintaxe Abstrata (AST).
+    * `lex.c`: Arquivo C gerado pelo Flex a partir de `lex.l`.
+    * `bison.c`: Arquivo C gerado pelo Bison a partir de `bison.y`.
+* `bin/`: Diretório onde o executável compilado (`main`) será colocado.
+* `code.mag`: Um arquivo de exemplo de programa `mag`.
+* `test.mag`: Um arquivo de teste da linguagem `mag` com diversas funcionalidades.
+* `makefile`: O arquivo principal para automatizar a compilação e execução.
 
 ## Compilação e Execução com o `makefile`
 
