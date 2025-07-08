@@ -12,6 +12,15 @@ A linguagem `mag` suporta as seguintes funcionalidades principais:
 * **Entrada e Saída**: Funções `out()` para exibir dados e `in()` para ler entrada do usuário.
 * **Variáveis**: Declaração (`var`) e atribuição de valores a variáveis.
 * **Vetores**: Suporte para declaração e acesso a elementos de vetores (ex: `var vetor[20]`).
+<<<<<<< HEAD
+=======
+* **Operadores Aritméticos**: Suporte para operações matemáticas básicas:
+    * Adição (`+`)
+    * Subtração (`-`)
+    * Multiplicação (`*`)
+    * Divisão (`/`)
+    * Potenciação (`^`)
+>>>>>>> 929b6cc075114ef6e8ea86671eceae7caa8ef5b4
 * **Controle de Fluxo**:
     * Condicionais: `when (condição) { ... }` (equivalente a `if`) e `otherwise { ... }` (equivalente a `else`).
     * Laços de Repetição: `repeate_while (condição) { ... }` (equivalente a `while`).
