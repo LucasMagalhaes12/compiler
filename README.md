@@ -1,157 +1,99 @@
-Linguagem mag
-Introdução
-Mag é uma linguagem de programação personalizada desenvolvida usando Flex para análise lexical e Bison para análise sintática. Este repositório contém o código-fonte do compilador da linguagem mag, permitindo compilar e executar programas mag.
-
-Funcionalidades
-A linguagem mag suporta as seguintes funcionalidades, como demonstrado em 
-
-test.mag:
-
-Comentários:
-
-Comentários de linha única começando com 
-
-@.
-
-Comentários de várias linhas entre 
-
-/* ... */.
-
-
-Saída: A função out() para imprimir valores no console.
-
-
-Declaração de Variáveis: Declaração de variáveis usando a palavra-chave var.
-
-
-Atribuição de Variáveis: Atribuição de valores a variáveis.
-
-
-Entrada: A função in() para ler a entrada do usuário em variáveis.
-
-
-Vetores: Declaração e manipulação de vetores, por exemplo, var vetor[20].
-
-Declarações Condicionais:
-
-
-when (condição) { ... }: Equivalente a uma declaração if.
-
-
-otherwise { ... }: Equivalente a uma declaração else.
-
-Laços de Repetição:
-
-
-repeate_while (condição) { ... }: Equivalente a um laço while.
-
-Estrutura do Projeto
-O projeto está organizado da seguinte forma:
-
-src/: Contém o código-fonte para os componentes do compilador:
-
-
-lex.l: O arquivo fonte do Flex (analisador lexical).
-
-
-bison.y: O arquivo fonte do Bison (gerador de parser).
-
-
-ast.c: Implementação da Árvore de Sintaxe Abstrata (AST) (mencionado em makefile.txt como um arquivo fonte).
-
-
-lex.c: Analisador lexical gerado (após executar o Flex).
-
-
-bison.c: Parser gerado (após executar o Bison).
-
-
-bin/: Conterá o executável compilado para a linguagem mag.
-
-
-code.mag: Um arquivo de programa mag padrão usado pelo comando run no makefile.
-
-
-test.mag: Um exemplo de programa mag demonstrando as funcionalidades da linguagem.
-
-
-makefile: Contém regras para construir, limpar e executar o compilador.
-
-Construindo o Compilador
-O projeto usa um makefile para automatizar o processo de construção. Para compilar o compilador da linguagem mag, navegue até o diretório raiz do projeto e execute:
-
-Bash
-
-make compile
-Este comando executará os seguintes passos:
-
-Gerará 
-
-src/lex.c a partir de src/lex.l usando Flex.
-
-Gerará 
-
-src/bison.c a partir de src/bison.y usando Bison.
-
-Compilará 
-
-src/bison.c, src/ast.c (e potencialmente outras fontes se adicionadas a SOURCES no makefile) usando GCC, linkando com as bibliotecas fl (biblioteca Flex) e m (biblioteca matemática).
-
-Criará o executável 
-
-main no diretório bin/.
-
-Passos de Construção Individuais
-Você também pode executar passos de construção individuais, se necessário:
-
-Flex (Geração do Analisador Lexical):
-
-Bash
-
-make flex
-Isso gerará 
-
-src/lex.c a partir de src/lex.l.
-
-Bison (Geração do Parser):
-
-Bash
-
-make bison
-Isso gerará 
-
-src/bison.c a partir de src/bison.y.
-
-GCC (Compilação):
-
-Bash
-
-make gcc
-Isso compilará 
-
-src/bison.c (e src/ast.c se SOURCES for definido) no executável bin/main, linkando com as bibliotecas necessárias.
-
-Executando um Programa mag
-Para compilar e executar o programa code.mag padrão (ou qualquer outro programa especificado pela variável CODE no makefile), use:
-
-Bash
-
-make run
-Este comando primeiro chama 
-
-make compile para garantir que o compilador esteja construído e, em seguida, executa o programa main compilado com code.mag como argumento.
-
-Para executar um arquivo .mag diferente, você normalmente executaria o binário compilado diretamente, por exemplo:
-
-Bash
-
-./bin/main test.mag
-Limpando o Projeto
-Para remover arquivos objeto e executáveis gerados, execute:
-
-Bash
-
-make clean
-Este comando apagará os arquivos 
-
-lex.c e bison.c (referidos como OBJFLEX e OBJBISON no makefile) do diretório src/.
+# Linguagem mag
+
+## Introdução
+
+Este projeto apresenta a linguagem de programação "mag", um compilador desenvolvido utilizando **Flex** para a análise lexical (`lex.l`) e **Bison** para a análise sintática (`bison.y`). O objetivo deste README é guiá-lo através do processo de compilação e execução de programas `mag` utilizando o `makefile` fornecido.
+
+## Funcionalidades da Linguagem mag
+
+A linguagem `mag` suporta as seguintes funcionalidades principais:
+
+* **Comentários**: Suporte a comentários de linha única (iniciados com `@`) e de múltiplas linhas (entre `/* ... */`).
+* **Entrada e Saída**: Funções `out()` para exibir dados e `in()` para ler entrada do usuário.
+* **Variáveis**: Declaração (`var`) e atribuição de valores a variáveis.
+* **Vetores**: Suporte para declaração e acesso a elementos de vetores (ex: `var vetor[20]`).
+* **Controle de Fluxo**:
+    * Condicionais: `when (condição) { ... }` (equivalente a `if`) e `otherwise { ... }` (equivalente a `else`).
+    * Laços de Repetição: `repeate_while (condição) { ... }` (equivalente a `while`).
+
+Um exemplo de uso dessas funcionalidades pode ser encontrado no arquivo `test.mag`.
+
+## Estrutura do Projeto
+
+O projeto é organizado da seguinte forma:
+
+* `src/`: Contém os arquivos fonte do compilador:
+    * `lex.l`: Definições do analisador lexical (Flex).
+    * `bison.y`: Definições do analisador sintático (Bison).
+    * `ast.c`: Implementação da Árvore de Sintaxe Abstrata (AST).
+    * `lex.c`: Arquivo C gerado pelo Flex a partir de `lex.l`.
+    * `bison.c`: Arquivo C gerado pelo Bison a partir de `bison.y`.
+* `bin/`: Diretório onde o executável compilado (`main`) será colocado.
+* `code.mag`: Um arquivo de exemplo de programa `mag`.
+* `test.mag`: Um arquivo de teste da linguagem `mag` com diversas funcionalidades.
+* `makefile`: O arquivo principal para automatizar a compilação e execução.
+
+## Compilação e Execução com o `makefile`
+
+O `makefile` é o método preferencial e mais fácil para construir e executar o compilador da linguagem `mag`.
+
+### Pré-requisitos
+
+Certifique-se de ter as seguintes ferramentas instaladas em seu sistema:
+
+* **GCC**: O compilador C (`gcc`).
+* **Flex**: Gerador de analisadores lexicais (`flex`).
+* **Bison**: Gerador de analisadores sintáticos (`bison`).
+
+### Comandos do `makefile`
+
+Navegue até o diretório raiz do projeto no seu terminal.
+
+1.  **Compilar o Projeto Completo**:
+    Para compilar todo o projeto, gerando os arquivos de código-fonte (`lex.c`, `bison.c`) e o executável final, use:
+    ```bash
+    make compile
+    ```
+    Este comando executa as seguintes etapas na ordem correta:
+    * Gera `src/lex.c` a partir de `src/lex.l` usando Flex.
+    * Gera `src/bison.c` a partir de `src/bison.y` usando Bison.
+    * Compila `src/bison.c` e `src/ast.c` (se `ast.c` for o único `SOURCES` definido) usando `gcc`, linkando com as bibliotecas `flex` (`-lfl`) e `math` (`-lm`).
+    * Cria o executável `main` no diretório `bin/`.
+
+2.  **Executar um Programa `mag`**:
+    Para compilar o projeto (se ainda não estiver compilado) e, em seguida, executar o arquivo `code.mag`, utilize:
+    ```bash
+    make run
+    ```
+    Isso executará o comando `./bin/main code.mag`.
+
+    Para executar um arquivo `mag` específico (por exemplo, `test.mag`), você pode fazer isso manualmente após a compilação:
+    ```bash
+    ./bin/main test.mag
+    ```
+
+3.  **Compilação Individual de Componentes**:
+    O `makefile` também permite compilar partes específicas do projeto:
+    * **Apenas Flex (Analisador Lexical)**:
+        ```bash
+        make flex
+        ```
+        Gera `src/lex.c` a partir de `src/lex.l`.
+    * **Apenas Bison (Analisador Sintático)**:
+        ```bash
+        make bison
+        ```
+        Gera `src/bison.c` a partir de `src/bison.y`.
+    * **Apenas GCC (Compilação do Código C)**:
+        ```bash
+        make gcc
+        ```
+        Compila `src/bison.c` e outros fontes C para criar o executável `main`. Note que este comando assume que `lex.c` e `bison.c` já foram gerados.
+
+4.  **Limpar o Projeto**:
+    Para remover os arquivos gerados durante a compilação (como `lex.c` e `bison.c`), use:
+    ```bash
+    make clean
+    ```
+
+---

@@ -32,7 +32,7 @@ out(" ")
 
 
 @ if
-when (10 < 100) {
+when (1001 < 100) {
     out("saida do if")
 }
 

@@ -272,6 +272,9 @@ double eval(Ast *a) {
         case '/': /* Operações */
             v = eval(a->l) / eval(a->r);
             break;
+        case '^':
+            v = pow(eval(a->l), eval(a->r));
+            break;
         case 'M': /* Operações, número negativo */
             v = -eval(a->l);
             break;
