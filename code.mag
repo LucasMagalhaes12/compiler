@@ -1,11 +1,42 @@
-START
 
-output("Digite um número para 'a': ")
-input(a)
-output("Digite o segundo número para 'b': ")
-input(b)
-output("(a + b) * 10 = ")
-d = (a + b) * 10
-output(d)
+var a
+var vetor[10]
+var teste 
+teste = 212
+out("teste")
+a = 100
+vetor[4] = 30
 
-END
+vetor[3] = a
+vetor[2] = vetor[4] * 2
+
+out(a)
+out(vetor[4])
+out(vetor[3])
+out(vetor[2])
+
+when (vetor[4] < vetor[3]) {
+    out(vetor[4])
+}
+
+otherwise {
+    out(vetor[3])
+}
+
+var n
+n = 1
+
+repeate_while (n<10) {
+    n = n + 1
+    out(n)
+}
+
+repeate_for (var a=1; a<10; a=a+1) {
+    out(teste)
+}
+
+
+in(n)
+out(n)
+
+endfile

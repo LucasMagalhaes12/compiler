@@ -1,0 +1,56 @@
+@ comentario
+/*
+comentario multi linhas
+*/
+
+
+out("essa é uma saida")
+out(" ")
+
+
+@ declaração de variavel
+out("declaração de variavel")
+var variavel
+variavel = 10
+out("valor da variavel:")
+out(variavel)
+out(" ")
+
+
+@ entrada
+out("digite um valor para a variavel:")
+in(variavel)
+out(" ")
+
+
+@ vetor
+var vetor[20]
+out("Atribuição da variavel a uma posição do vetor criado")
+vetor[10] = variavel
+out(vetor[10])
+out(" ")
+
+
+@ if
+when (10 < 100) {
+    out("saida do if")
+}
+
+
+@@ else
+otherwise {
+    out("saida do else")
+}
+out(" ")
+
+
+@ while
+out("Teste de repetição do while")
+var i
+i = 0
+repeate_while (i < 2) {
+    i = i + 1
+    out("while")
+}
+
+endfile
